@@ -45,7 +45,7 @@ def get_one_contact(name):
     except Exception as e:
         return dumps({'error' : str(e)})
 
-@app.route("/update_one_contact/<name>", methods = ['POST','GET'])
+@app.route("/update_one_contact/<name>", methods = ['PUT'])
 def update_one_contact(name):
     try:
         data = json.loads(request.data)
@@ -57,7 +57,7 @@ def update_one_contact(name):
     except Exception as e:
         return dumps({'error' : str(e)})
 
-@app.route("/delete_one_contact/<name>", methods = ['POST','GET'])
+@app.route("/delete_one_contact/<name>", methods = ['DELETE'])
 def delete_one_contact(name):
     try:
         x = db.Contacts.find_one({"name": name})
